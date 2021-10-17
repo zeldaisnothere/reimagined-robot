@@ -1,0 +1,53 @@
+
+# This program will validate a user's password through the following criteria
+
+# Functions to validate the password
+def password_check(password):
+    special_sym = ['$', '@', '#', '%', '!']
+    val = True
+
+    # checks if user password has 8 characters
+    if len(password) < 8:
+        print('length should be at least 8 characters')
+        val = False
+
+    # checks if user password has more than 8 characters
+    if len(password) > 20:
+        print('length should be not be greater than 8 characters')
+        val = False
+
+    # checks if user password has numbers
+    if not any(char.isdigit() for char in password):
+        print('Password should have at least one number')
+        val = False
+
+    # checks if user password has uppercase letters
+    if not any(char.isupper() for char in password):
+        print('Password should have at least one uppercase letter')
+        val = False
+
+    # checks if user password has lowercase letters
+    if not any(char.islower() for char in password):
+        print('Password should have at least one lowercase letter')
+        val = False
+
+    # checks if user password has special characters
+    if not any(char in special_sym for char in password):
+        print('Password should have one of these special characters $@#!')
+        val = False
+
+    if val:
+        return val
+
+
+# Main program for checking user's password
+def main():
+    password = input("Enter password:")
+    if not password_check(password):
+        print("Invalid Password !!")
+    else:
+        print("Password is valid")
+
+# Final Product
+if __name__ == '__main__':
+    main()
